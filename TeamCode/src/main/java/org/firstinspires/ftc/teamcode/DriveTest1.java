@@ -77,10 +77,10 @@ public class DriveTest1 extends ThreadOpMode {
 
                 //Make this more sensitive and add buttons for fast turn otherwise
                 if (Math.abs(rx) > 0) {
-                    fl.setPower(-rx*0.6);
-                    bl.setPower(-rx*0.6);
-                    fr.setPower(rx*0.6);
-                    br.setPower(rx*0.6);
+                    fl.setPower(rx*0.6);
+                    bl.setPower(rx*0.6);
+                    fr.setPower(-rx*0.6);
+                    br.setPower(-rx*0.6);
                 }
             }
         }));
