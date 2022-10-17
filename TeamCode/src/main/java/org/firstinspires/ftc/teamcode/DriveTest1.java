@@ -44,8 +44,8 @@ public class DriveTest1 extends ThreadOpMode {
         cascade  = hardwareMap.get(DcMotor.class, "cascade");
 
         //Reversing power for left wheels
-        fr.setDirection(DcMotorSimple.Direction.REVERSE);
-        br.setDirection(DcMotorSimple.Direction.REVERSE);
+        fl.setDirection(DcMotorSimple.Direction.REVERSE);
+        bl.setDirection(DcMotorSimple.Direction.REVERSE);
 
         gripper = hardwareMap.get(Servo.class, "gripper");
         slide1 = hardwareMap.get(Servo.class, "wire1");
@@ -62,10 +62,10 @@ public class DriveTest1 extends ThreadOpMode {
                 double xAdj = x * Math.abs(x) * Math.abs(x);
 
                 if (y == 0.0) {
-                    fl.setPower(-xAdj*speedAdj);
-                    bl.setPower(xAdj*speedAdj);
-                    fr.setPower(xAdj*speedAdj);
-                    br.setPower(-xAdj*speedAdj);
+                    fl.setPower(xAdj*speedAdj);
+                    bl.setPower(-xAdj*speedAdj);
+                    fr.setPower(-xAdj*speedAdj);
+                    br.setPower(xAdj*speedAdj);
                 }
 
                 if (Math.abs(x) < Math.abs(y * Math.tan(3.1415 / 6))) {
