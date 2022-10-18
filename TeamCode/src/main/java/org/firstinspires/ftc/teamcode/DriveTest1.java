@@ -104,46 +104,41 @@ public class DriveTest1 extends ThreadOpMode {
         }));
 
         //Speed control
-        registerThread(new TaskThread(new TaskThread.Actions() {
+        /*registerThread(new TaskThread(new TaskThread.Actions() {
             @Override
             public void loop() {
-                if (gamepad1.y) {
-                    sum = sum + 1;
-                }
-                if (sum % 2 == 0) {
-                    speedAdj = 1;
-                }
-                if (sum % 2 == 1) {
-                    speedAdj = 0.3;
-                }
-            }
-        }));
 
+            }
+        })); */
+
+        //Gripper
         registerThread(new TaskThread(new TaskThread.Actions() {
             @Override
             public void loop() {
-                if (gamepad2.x) {
+                if (gamepad2.left_bumper) {
                     gripper.setPosition(0.5);
                 }
-                if (gamepad2.b) {
+                if (gamepad2.right_bumper) {
                     gripper.setPosition(0.6);
                 }
             }
         }));
 
+        //Cascading slide
         registerThread(new TaskThread(new TaskThread.Actions() {
             @Override
             public void loop() {
-                while (gamepad2.y) {
+                while (gamepad2.left_stick_y > 0.1) {
                     cascade.setPower(0.8);
                 }
-                while (gamepad2.a) {
+                while (gamepad2.left_stick_y < -0.1) {
                     cascade.setPower(-0.8);
                 }
                 cascade.setPower(0);
             }
         }));
 
+        //Backend of cascading slide
         registerThread(new TaskThread(new TaskThread.Actions() {
             @Override
             public void loop() {
@@ -165,8 +160,14 @@ public class DriveTest1 extends ThreadOpMode {
 
     @Override
     public void mainLoop() {
-        //No need
+        if (gamepad1.y) {
+            sum = sum + 1;
+        }
+        if (sum % 2 == 0) {
+            speedAdj = 1;
+        }
+        if (sum % 2 == 1) {
+            speedAdj = 0.3;
+        }
     }
 }
-
-//grace comment (test)
