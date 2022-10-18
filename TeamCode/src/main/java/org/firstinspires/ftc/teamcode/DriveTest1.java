@@ -134,7 +134,7 @@ public class DriveTest1 extends ThreadOpMode {
                 while (gamepad2.left_stick_y < -0.1) {
                     cascade.setPower(-0.8);
                 }
-                cascade.setPower(0);
+                cascade.setPower(0.2);
             }
         }));
 
